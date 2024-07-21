@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import ivonetlogo from '../assets/ivonetlogo.png';
+import ivonetimg from '../assets/ivonetimg.png';
 
 
 const Register = () => {
@@ -41,7 +43,18 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <div className='grid grid-cols-2'>
+        <div className='bg-purple-500'>
+            <div className='flex'>
+                <img src={ivonetlogo} alt="" />
+                <h1>Ivonet</h1>
+            </div>
+            <img src={ivonetimg} alt="" />
+            <h2>Explore the world of opportunities</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Nam rerum totam, aliquam ullam accusamus similique, magni repudiandae asperiores laudantium minus in facere ipsa tempore sed blanditiis consectetur veniam placeat quis.</p>
+        </div>
+    <form onSubmit={handleSubmit} className="space-y-4 p-10 bg-white">
       <div>
         <label>Username</label>
         <input type="text" name="username" value={formData.username} onChange={handleChange} className="border rounded" />
@@ -88,6 +101,7 @@ const Register = () => {
       </div>
       <button type="submit" className="bg-blue-500 text-white rounded px-4 py-2">Register</button>
     </form>
+    </div>
   );
 };
 
