@@ -1,11 +1,14 @@
+// src/pages/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,8 +18,9 @@ function Login() {
         password,
       });
       if (response.status === 200) {
-        localStorage.setItem('access_token', response.data.access); // Save the access token if needed
-        navigate('/dashboard'); // Redirect to dashboard after successful login
+        localStorage.setItem('access_token', response.data.access);
+        login(); // Set authentication state to true
+        navigate('/dashboard');
       }
     } catch (error) {
       console.error('Login error', error);
