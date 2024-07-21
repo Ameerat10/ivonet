@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Feed(models.Model):
     title = models.CharField(max_length=200)
@@ -9,14 +10,14 @@ class Feed(models.Model):
         return self.title
 
 class Dashboard(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     stats = models.JSONField()  # Assuming stats are stored as JSON
 
     def __str__(self):
         return f"Dashboard for {self.user.username}"
 
 class Application(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     opportunity = models.ForeignKey('Opportunity', on_delete=models.CASCADE)
     status = models.CharField(max_length=50)
 
@@ -24,8 +25,8 @@ class Application(models.Model):
         return f"Application by {self.user.username} for {self.opportunity.title}"
 
 class Message(models.Model):
-    sender = models.ForeignKey('auth.User', related_name='sent_messages', on_delete=models.CASCADE)
-    receiver = models.ForeignKey('auth.User', related_name='received_messages', on_delete=models.CASCADE)
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='sent_messages', on_delete=models.CASCADE)
+    receiver = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='received_messages', on_delete=models.CASCADE)
     subject = models.CharField(max_length=200)
     body = models.TextField()
     date_sent = models.DateTimeField(auto_now_add=True)
@@ -64,7 +65,7 @@ class JobListing(models.Model):
         return self.title
 
 class Recommendation(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
 
@@ -72,9 +73,8 @@ class Recommendation(models.Model):
         return f"Recommendation for {self.user.username}"
 
 class Setting(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     preferences = models.JSONField()
 
     def __str__(self):
         return f"Settings for {self.user.username}"
-
