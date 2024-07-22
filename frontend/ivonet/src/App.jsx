@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
+import JobListings from './pages/JobListings';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+            <Route path="/joblistings" element={<ProtectedRoute element={<JobListings />} />} />
           </Route>
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>

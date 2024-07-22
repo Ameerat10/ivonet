@@ -8,9 +8,9 @@ const Layout = () => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <div className="flex bg-gray-100 min-h-screen">
+    <div className="flex min-h-screen bg-gray-100 font-nunito">
       {isAuthenticated && <Sidebar />}
-      <div className={`p-6 ${isAuthenticated ? 'ml-64' : 'ml-0'} flex-1`}>
+      <div className={`p-6  ${isAuthenticated ? 'ml-64 bg-whitej' : 'ml-0'} flex-1`}>
         <Outlet />
       </div>
     </div>
