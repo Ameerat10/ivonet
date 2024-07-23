@@ -26,6 +26,7 @@ function Login() {
 
       if (response.status === 200) {
         localStorage.setItem('access_token', response.data.access);
+        localStorage.setItem('refresh_token', response.data.refresh);
         login(); // Set authentication state to true
         navigate('/dashboard');
       }
@@ -85,7 +86,7 @@ function Login() {
         </button>
         </div>
         {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
-        <p className='flex justify-center mt-10'>Already have an account? <Link to='/login' className="text-blue-500">Login</Link></p>
+        <p className='flex justify-center mt-10'>Already have an account? <Link to='/register' className="text-blue-500">Register</Link></p>
       </form>
     </div>
   );
