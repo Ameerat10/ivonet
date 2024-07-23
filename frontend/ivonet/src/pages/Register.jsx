@@ -58,7 +58,7 @@ const Register = () => {
 
   return (
     <div className='grid grid-cols-5 py-10 px-40'>
-      <div className='grid col-span-2 bg-purple-500 p-10 text-white shadow-md'>
+      <div className='bg-[url(./assets/bg-left.png)] grid col-span-2 p-10 text-white shadow-md'>
         <div className='flex justify-center gap-2'>
           <img src={ivonetlogo} alt="" className='h-12' />
           <h1 className='flex items-center text-2xl font-semibold'>IvoNet</h1>
@@ -73,7 +73,7 @@ const Register = () => {
         </div>
       </div>
       <form onSubmit={handleSubmit} className="space-y-4f p-10 col-span-3 bg-white">
-        <h1 className='flex justify-center text-3xl text-purple-500 font-bold'>Welcome to IvoNet</h1>
+        <h1 className='flex justify-center text-3xl text-[#7B76F1CC] font-bold'>Welcome to IvoNet</h1>
         <p className='flex justify-center text-2x font-bold'>Join Your Gateway to Endless Opportunities Today!</p>
         <div className='grid grid-cols-2 gap-10 mt-10 mb-5'>
           <div className='space-y-4'>
@@ -145,9 +145,9 @@ const Register = () => {
         </div>
         {error && <p className="text-red-500">{error}</p>}
         <div className='flex justify-center mb-2'>
-        <button type="submit" className="bg-purple-500 text-white rounded-full shadow-lg px-10 py-2">Register</button>
+        <button type="submit" className="bg-[#7B76F1CC] text-white rounded-full shadow-lg px-10 py-2">Register</button>
         </div>
-        <p className='flex justify-center'>Already have an account? <Link to='/login' className="text-blue-500">Login</Link></p>
+        <p className='flex justify-center mt-2'>Already have an account? <Link to='/login' className="text-blue-500">Login</Link></p>
       </form>
     </div>
   );

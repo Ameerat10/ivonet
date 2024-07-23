@@ -1,48 +1,10 @@
-// // src/pages/Login.js
-// import React, { useState } from 'react';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
-// import { useAuth } from '../context/AuthContext';
-
-// function Login() {
-//   const [username, setUsername] = useState('');
-//   const [password, setPassword] = useState('');
-//   const navigate = useNavigate();
-//   const { login } = useAuth();
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', {
-//         username,
-//         password,
-//       });
-//       if (response.status === 200) {
-//         localStorage.setItem('access_token', response.data.access);
-//         login(); // Set authentication state to true
-//         navigate('/dashboard');
-//       }
-//     } catch (error) {
-//       console.error('Login error', error);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-//       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-//       <button type="submit">Login</button>
-//     </form>
-//   );
-// }
-
-// export default Login;
-
 // src/pages/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import ivonetlogo from '../assets/ivonetlogo.png';
+import ivonetimg from '../assets/ivonetimg.png';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -76,37 +38,54 @@ function Login() {
   };
 
   return (
-    <div className="login-form flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+    <div className="login-form grid grid-cols-2 justify-center bg-gray-100 py-10 px-40">
+      <div className='bg-[url(./assets/bg-left.png)] p-10 text-white shadow-md'>
+      <div className='flex justify-center gap-2'>
+          <img src={ivonetlogo} alt="" className='h-12' />
+          <h1 className='flex items-center text-2xl font-semibold'>IvoNet</h1>
+        </div>
+        <div className='grid justify-center'>
+          <img src={ivonetimg} alt="" className='p-10' />
+        </div>
+        <div className='grid justify-center'>
+          <h2 className='flex justify-center font-bold text-2xl'>Explore the World of </h2>
+          <span className='flex justify-center font-bold text-2xl'>Opportunities</span>
+          <p className='flex justify-center px-10 ml-6 text-sm text-gray-200'>Discover the future of your career with IvoNet, the premier platform designed exclusively for Ivorian university students.</p>
+        </div>
+      </div>
+      <form onSubmit={handleSubmit} className="w-full bg-white p-20 shadow">
+        <h2 className="text-2xl font-bold mb-6 text-[#7B76F1CC] text-center">Welcome Back to the IvoNet Community</h2>
         <div className="mb-4">
+          <label htmlFor="username">Username</label>
           <input
             type="text"
-            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="w-full p-3 border border-gray-300 rounded-lg"
+            className="w-full border-b-2 focus:outline-none"
           />
         </div>
         <div className="mb-6">
+          <label htmlFor="password">Password</label>
           <input
             type="password"
-            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full p-3 border border-gray-300 rounded-lg"
+            className="w-full border-b-2 focus:outline-none"
           />
         </div>
+        <div className='flex justify-center mb-2'>
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="bg-[#7B76F1CC] text-white rounded-full shadow-lg px-10 py-2"
         >
           {loading ? 'Logging in...' : 'Login'}
         </button>
+        </div>
         {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
+        <p className='flex justify-center mt-10'>Already have an account? <Link to='/login' className="text-blue-500">Login</Link></p>
       </form>
     </div>
   );
