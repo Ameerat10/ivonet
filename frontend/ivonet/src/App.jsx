@@ -14,9 +14,14 @@ import Opportunities from './pages/Opportunities';
 
 function App() {
   const [appliedJobs, setAppliedJobs] = useState([]);
+  const [appliedOpportunities, setAppliedOpportunities] = useState([]);
 
   const handleApply = (job) => {
     setAppliedJobs([...appliedJobs, job]);
+  };
+
+  const handleApplyOpportunity = (opportunity) => {
+    setAppliedOpportunities([...appliedOpportunities, opportunity]);
   };
 
   return (
@@ -26,10 +31,10 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+            <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard appliedJobs={appliedJobs} appliedOpportunities={appliedOpportunities}  />} />} />
             <Route path="/joblistings" element={<ProtectedRoute element={<JobListings onApply={handleApply} />} />} />
-            <Route path="/applications" element={<ProtectedRoute element={<Applications appliedJobs={appliedJobs} />} />} />
-            <Route path="/opportunities" element={<ProtectedRoute element={<Opportunities />} />} />
+            <Route path="/applications" element={<ProtectedRoute element={<Applications appliedJobs={appliedJobs} appliedOpportunities={appliedOpportunities} />} />} />
+            <Route path="/opportunities" element={<ProtectedRoute element={<Opportunities onApply={handleApplyOpportunity} />} />} />
           </Route>
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
