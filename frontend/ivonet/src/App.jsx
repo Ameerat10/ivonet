@@ -10,6 +10,8 @@ import { AuthProvider } from './context/AuthContext';
 import JobListings from './pages/JobListings';
 import Applications from './pages/Applications';
 import Opportunities from './pages/Opportunities';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
 
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
   };
 
   return (
+    <I18nextProvider i18n={i18n}>
     <AuthProvider>
       <Router>
         <Routes>
@@ -40,6 +43,7 @@ function App() {
         </Routes>
       </Router>
     </AuthProvider>
+    </I18nextProvider>
   );
 }
 
