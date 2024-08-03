@@ -64,7 +64,7 @@ const Sidebar = () => {
         {isAuthenticated ? (
           <>
             <div className='grid gap-5 font-bold'>
-              <li><NavLink to="/feeds" className={({ isActive }) => (isActive ? activeClass : "py-2 pl-4 pr-14 hover:text-white rounded-md hover:bg-[#7B76F1CC]")}>{t('Feeds')}</NavLink></li>
+              <li><NavLink to="/profile" className={({ isActive }) => (isActive ? activeClass : "py-2 pl-4 pr-14 hover:text-white rounded-md hover:bg-[#7B76F1CC]")}>{t('Profile')}</NavLink></li>
               <li><NavLink to="/dashboard" className={({ isActive }) => (isActive ? activeClass : "py-2 pl-4 pr-14 hover:text-white rounded-md hover:bg-[#7B76F1CC]")}>{t('Dashboard')}</NavLink></li>
               <li><NavLink to="/applications" className={({ isActive }) => (isActive ? activeClass : "py-2 pl-4 pr-14 hover:text-white rounded-md hover:bg-[#7B76F1CC]")}>{t('Applications')}</NavLink></li>
               <li><NavLink to="/opportunities" className={({ isActive }) => (isActive ? activeClass : "py-2 pl-4 pr-14 hover:text-white rounded-md hover:bg-[#7B76F1CC]")}>{t('Opportunities')}</NavLink></li>

@@ -10,6 +10,7 @@ import { AuthProvider } from './context/AuthContext';
 import JobListings from './pages/JobListings';
 import Applications from './pages/Applications';
 import Opportunities from './pages/Opportunities';
+import Profile from './pages/Profile';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/joblistings" element={<ProtectedRoute element={<JobListings onApply={handleApply} />} />} />
             <Route path="/applications" element={<ProtectedRoute element={<Applications appliedJobs={appliedJobs} appliedOpportunities={appliedOpportunities} />} />} />
             <Route path="/opportunities" element={<ProtectedRoute element={<Opportunities onApply={handleApplyOpportunity} />} />} />
+            <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
           </Route>
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
