@@ -66,7 +66,7 @@ const Profile = () => {
   const handleSave = async () => {
     try {
       const token = localStorage.getItem('access_token');
-      await axios.put('http://127.0.0.1:8000/api/auth/profile/', formData, {
+      await axios.put('http://35.174.213.47:8000/api/auth/profile/', formData, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
