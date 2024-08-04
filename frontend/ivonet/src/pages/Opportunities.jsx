@@ -20,7 +20,7 @@ const Opportunities = ({ onApply }) => {
       }
 
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/opportunities/', {
+        const response = await axios.get('https://ivonet.onrender.com/api/opportunities/', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
