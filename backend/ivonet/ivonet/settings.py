@@ -29,11 +29,11 @@ ALLOWED_HOSTS = ['*']
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    "https://ivonet.netlify.app/",
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:5173',  # Replace with your frontend URL
+    'https://ivonet.netlify.app/',  # Replace with your frontend URL
 ]
 
 
