@@ -37,7 +37,8 @@ const Register = () => {
       return;
     }
     try {
-      const response = await axios.post('https://ivonet.onrender.com/api/auth/register/', formData);
+      // const response = await axios.post('https://ivonet.onrender.com/api/auth/register/', formData);
+      const response = await axios.post('http://127.0.0.1:8000/api/auth/register/', formData);
       console.log(response.data);
       if (response.status === 201) {
         navigate('/login');

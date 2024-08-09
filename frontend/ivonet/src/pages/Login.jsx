@@ -117,7 +117,7 @@ function Login() {
     setLoading(true);
     setError(''); // Clear any previous errors
     try {
-      const response = await axios.post('https://ivonet.onrender.com/api/auth/login/', {
+      const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', {
         username,
         password,
       });
